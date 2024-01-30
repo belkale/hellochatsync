@@ -11,7 +11,7 @@ class MyHomePage extends ConsumerWidget {
   final FocusNode myFocusNode = FocusNode();
   MyHomePage({required this.title, super.key});
 
-  void _sendMessage(WidgetRef ref) async {
+  Future<void> _sendMessage(WidgetRef ref) async {
     final message = messageController.text;
     ref.read(myListProvider.notifier).add(message);
     messageController.clear();
@@ -19,7 +19,7 @@ class MyHomePage extends ConsumerWidget {
     _asyncResponse(ref, message);
   }
 
-  void _asyncResponse(WidgetRef ref, String message) async {
+  Future<void> _asyncResponse(WidgetRef ref, String message) async {
     final chatService = ref.read(chatServiceProvider);
     final response = await chatService.send(message);
     ref.read(myListProvider.notifier).add(response);
