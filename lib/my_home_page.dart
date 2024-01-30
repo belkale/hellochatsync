@@ -48,7 +48,7 @@ class MyHomePage extends ConsumerWidget {
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     )),
-                _ => const CircularProgressIndicator(),
+                _ => const Center(child: CircularProgressIndicator()),
               },
             ),
             Container(
